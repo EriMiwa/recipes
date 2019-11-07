@@ -1,7 +1,76 @@
 .body {
-  font-family: 'Open Sans', sans-serif !important;
+  font-family: 'Viga', sans-serif !important;
+  
 }
 
 .text-slanted {
-  font-family: 'Courgette', cursive;
+  font-family: 'EB Garamond', serif;
+}
+
+.search-area {
+  padding-bottom: 10px;
+  border-top: 5px solid #E638C5;
+}
+
+.details-area {
+  border-top: 5px solid #E638C5;
+}
+
+.list-area {
+  background: #F0EDE5;
+}
+
+.text-warning {
+  color: #E638C5 !important;
+  font-weight: normal;
+}
+
+.btn {
+  font-family: 'EB Garamond', serif;
+}
+
+.btn-dark:hover {
+  background-color: #fff !important;
+  color: #343a40 !important;
+  border-color: #343a40 !important;
+}
+
+.btn-warning {
+  background-color: #E638C5 !important;
+  color: #fff;
+  border-color: #E638C5 !important;
+}
+
+.btn-warning:hover {
+  background-color: #fff !important;
+  color: #E638C5;
+  border: 1px solid #E638C5 !important;
+}
+
+.btn-warning:focus {
+box-shadow: 0 0 0 0.2rem rgb(230, 56, 197, .5) !important;
+}
+
+
+
+.form-control {
+  border: 1px solid #343a40;
+}
+
+.form-control:focus {
+  border: 1px solid #343a40;
+  box-shadow: 0 0 0 0rem #343a40 !important;
+}
+
+.input-group-append>button {
+  box-shadow: 0 0 0 0rem #343a40 !important;
+}
+
+.card {
+  border: 1px solid rgba(0,0,0,1) !important;
+}
+
+.card-footer {
+  background: #fff!important;
+  border-top: none;
 }

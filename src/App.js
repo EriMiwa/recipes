@@ -10,7 +10,7 @@ class App extends Component {
     recipes: recipes,
     url: 'https://www.food2fork.com/api/search?key=3d272798685ca84d1aa93f726ed3dbaf',
     base_url: 'https://www.food2fork.com/api/search?key=3d272798685ca84d1aa93f726ed3dbaf',
-    detail_id: 35382,
+    details_id: 35382,
     pageIndex: 1,
     search: '',
     query: '&q=',
@@ -22,7 +22,7 @@ class App extends Component {
       const data = await fetch(this.state.url);
       const jsonData = await data.json();
       if(jsonData.recipes.length === 0) {
-        this.setState(()=>{
+        this.setState(() => {
           return {error:'sorry, but your search did not return any result :('}
         })
       } else {
@@ -72,7 +72,7 @@ class App extends Component {
   handleDetails = (index, id) => {
     this.setState({
       pageIndex: index,
-      detail_id: id
+      details_id: id
     })
   }
 
@@ -99,6 +99,7 @@ class App extends Component {
   render() {
     return (
       <>
+        {console.log(this.state.details_id)}
         {this.displayPage(this.state.pageIndex)}
       </>
     );
