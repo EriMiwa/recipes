@@ -5,11 +5,12 @@ import {recipes} from './tempList';
 import RecipeList from './components/RecipeList';
 import RecipeDetails from './components/RecipeDetails';
 
+const apiKey = process.env.REACT_APP_API_KEY;
 class App extends Component {
   state= {
     recipes: recipes,
-    url: 'https://www.food2fork.com/api/search?key=3d272798685ca84d1aa93f726ed3dbaf',
-    base_url: 'https://www.food2fork.com/api/search?key=3d272798685ca84d1aa93f726ed3dbaf',
+    url: 'https://www.food2fork.com/api/search?key=',
+    base_url: 'https://www.food2fork.com/api/search?key=',
     details_id: 35382,
     pageIndex: 1,
     search: '',
@@ -19,12 +20,12 @@ class App extends Component {
 
   async getRecipes() {
     try {
-      const data = await fetch(this.state.url);
+      const data = await fetch(`${this.state.url}${apiKey}`);
       const jsonData = await data.json();
       if(jsonData.recipes.length === 0) {
         this.setState(() => {
           return {error:'sorry, but your search did not return any result :('}
-        })
+        },()=>{console.log(data.url)})
       } else {
         this.setState(() => {
           return {recipes:jsonData.recipes}
@@ -79,27 +80,36 @@ class App extends Component {
   handleChange = (e) => {
     this.setState({
       search: e.target.value
-    },
-    () => {
-      console.log(this.state.search);
-    }
-    );
+    });
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
     const {base_url, query, search} = this.state;
     this.setState(()=> {
-      return {url:`${base_url}${query}${search}`, search:""}
-    },() => {
-      this.getRecipes();
+      return {url:`${base_url}${apiKey}${query}${search}`, search:""}
+    }, async () => {
+      try {
+        const data = await fetch(`${this.state.url}`);
+        const jsonData = await data.json();
+        if(jsonData.recipes.length === 0) {
+          this.setState(() => {
+            return {error:'sorry, but your search did not return any result :('}
+          },()=>{console.log(data.url)})
+        } else {
+          this.setState(() => {
+            return {recipes:jsonData.recipes}
+          });
+        }
+      } catch(err) {
+        console.error(err);
+      }
     })
   }
 
   render() {
     return (
       <>
-        {console.log(this.state.details_id)}
         {this.displayPage(this.state.pageIndex)}
       </>
     );
