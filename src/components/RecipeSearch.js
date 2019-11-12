@@ -37,7 +37,7 @@ export default class RecipeSearch extends Component {
                   <div className="input-group-append">
                     <button 
                       type="submit" 
-                      className="btn btn-dark "
+                      className="btn btn-dark"
                       
                     >
                       <FontAwesomeIcon icon={faSearch} />
