@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Logo from '../logo2.png';
+import Logo from '../img/logo2.png';
 
 export default class RecipeSearch extends Component {
   render() {
